@@ -18,16 +18,14 @@ enum custom_keycodes {
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
 #define EISU LALT(KC_GRV)
+#define KC_LOWER LOWER
+#define KC_RAISE RAISE
 
 // wheson
 #define KC_ KC_TRNS
 #define KC_RST RESET
-enum user_macro {
-  UM_EMHL,
-  UM_KHKR
-};
-#define KC_EMHL MACROTAP(UM_EMHL)      // Lower / 英数(Mac)&変換(Win)
-#define KC_KHKR MACROTAP(UM_KHKR)      // Raise / かな(Mac)&無変換(Win)
+#define KC_EMHC LGUI_T(KC_HENK)      // ⌘ / 英数(Mac)&変換(Win)
+#define KC_KHKA RALT_T(KC_MHEN)      // Alt / かな(Mac)&無変換(Win)
 #define KC_TABCT LCTL_T(KC_TAB) // LeftControl / Tab
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -40,34 +38,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // |------+------+------+------+------+------+-------                    |------+------+------+------+------+------+------|
        LSFT ,   Z  ,   X  ,   C  ,   V  ,   B  ,      ,                           ,   N  ,   M  , COMM ,  DOT , SLSH , RSFT ,
   // |-------------+------+------+------+------+------+------.      .------+------+------+------+------+------+-------------|
-            ,      ,      ,  SPC ,/*|||*/ RGUI , EMHL , ENT  ,         SPC , KHKR , RALT ,/*|||*/ LEFT , DOWN ,  UP  , RGHT 
+            ,      ,      ,  SPC ,/*|||*/ EMHC ,LOWER , ENT  ,         SPC ,RAISE , KHKA ,/*|||*/ LEFT , DOWN ,  UP  , RGHT 
   // `--------------------------------------------------------      `-------------------------------------------------------'
   ),
 
   [_LOWER] = LAYOUT_kc(
+  // \ [ ] * %      ^ 7 8 9 !
+  // # ( ) - +      $ 4 5 6 & @ 
+  // ` { } _ =      0 1 2 3 | ~ 
   // ,------------------------------------------------.                    .------------------------------------------------.
-        ESC , F11  ,  F12 ,      ,      ,      ,      ,                           ,      ,   7  ,   8  ,   9  ,      , BSPC ,
+        ESC , BSLS , LBRC , RBRC , ASTR , PERC ,      ,                           , CIRC ,   7  ,   8  ,   9  , EXLM , BSPC ,
   // |------+------+------+------+------+------+------|                    |------+------+------+------+------+------+------|
-       TABCT,  F6  ,   F7 ,  F8  ,  F9  ,  F10 ,      ,                           ,      ,   4  ,   5  ,   6  ,      ,      , 
+       TABCT, HASH , LPRN , RPRN , MINS , PLUS ,      ,                           , DLR  ,   4  ,   5  ,   6  , AMPR ,  AT  , 
   // |------+------+------+------+------+------+-------                    |------+------+------+------+------+------+------|
-       LSFT ,  F1  ,   F2 ,  F3  ,  F4  ,  F5  ,      ,                           ,   0  ,   1  ,   2  ,   3  , DOT  ,      ,
+       LSFT , GRV  , LCBR , RCBR , UNDS , EQL  ,      ,                           ,   0  ,   1  ,   2  ,   3  , PIPE , TILD ,
   // |-------------+------+------+------+------+------+------.      .------+------+------+------+------+------+-------------|
-            ,      ,      ,  SPC ,/*|||*/ RGUI , EMHL , ENT  ,         SPC , KHKR , RALT ,/*|||*/ HOME , PGDN , PGUP , END  
+            ,      ,      ,  SPC ,/*|||*/ EMHC ,LOWER , ENT  ,         SPC ,RAISE , KHKA ,/*|||*/ HOME , PGDN , PGUP , END  
   // `--------------------------------------------------------      `-------------------------------------------------------'
   ),
 
   [_RAISE] = LAYOUT_kc(
-  // \ [ ] ^ $      @ ! & |
-  // # ( ) - ~      = + - %
-  // ` { } _          * /
+  // \ [ ] * %      ^ 7 8 9 !
+  // # ( ) - +      $ 4 5 6 & @ 
+  // ` { } _ =      0 1 2 3 | ~ 
   // ,------------------------------------------------.                    .------------------------------------------------.
-        ESC , BSLS , LBRC , RBRC , CIRC , DLR  ,      ,                           ,  AT  , EXLM , AMPR , PIPE ,      , BSPC ,
+        ESC , BSLS , LBRC , RBRC , ASTR , PERC ,      ,                           , CIRC ,   7  ,   8  ,   9  , EXLM , BSPC ,
   // |------+------+------+------+------+------+------|                    |------+------+------+------+------+------+------|
-       TABCT, HASH , LPRN , RPRN , MINS , TILD ,      ,                           ,  EQL , PLUS , MINS , PERC ,      ,      , 
+       TABCT, HASH , LPRN , RPRN , MINS , PLUS ,      ,                           , DLR  ,   4  ,   5  ,   6  , AMPR ,  AT  , 
   // |------+------+------+------+------+------+-------                    |------+------+------+------+------+------+------|
-       LSFT , GRV  , LCBR , RCBR , UNDS ,      ,      ,                           ,      , ASTR , SLSH ,      ,      ,      ,
+       LSFT , GRV  , LCBR , RCBR , UNDS , EQL  ,      ,                           ,   0  ,   1  ,   2  ,   3  , PIPE , TILD ,
   // |-------------+------+------+------+------+------+------.      .------+------+------+------+------+------+-------------|
-            ,      ,      ,  SPC ,/*|||*/ RGUI , EMHL , ENT  ,         SPC , KHKR , RALT ,/*|||*/ HOME , PGDN , PGUP , END  
+            ,      ,      ,  SPC ,/*|||*/ EMHC ,LOWER , ENT  ,         SPC ,RAISE , KHKA ,/*|||*/ HOME , PGDN , PGUP , END  
   // `--------------------------------------------------------      `-------------------------------------------------------'
   ),
 
@@ -75,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ,------------------------------------------------.                    .------------------------------------------------.
             ,      ,      ,      ,      ,      ,      ,                           ,      ,      ,      ,      ,      ,      ,
   // |------+------+------+------+------+------+------|                    |------+------+------+------+------+------+------|
-            ,      ,      ,      ,      ,      ,      ,                           ,      ,      ,      ,      ,      ,      ,
+            ,      ,      ,      ,      ,      ,      ,                           ,  F7  ,  F8  ,  F9  ,  F10 ,  F11 ,  F12 ,
   // |------+------+------+------+------+------+-------                    |------+------+------+------+------+------+------|
-            ,      ,      ,      ,      ,      ,      ,                           ,      ,      ,      ,      ,      ,      ,
+            ,      ,      ,      ,      ,      ,      ,                           ,  F1  ,  F2  ,  F3  ,  F4  ,  F5  ,  F6  ,
   // |-------------+------+------+------+------+------+------.      .------+------+------+------+------+------+-------------|
             ,      ,      ,      ,/*|||*/      ,      ,      ,             ,      ,      ,/*|||*/      ,      ,      ,      
   // `--------------------------------------------------------      `-------------------------------------------------------'
@@ -116,15 +117,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
   }
   return true;
-}
-
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-    switch(id) {
-        case UM_EMHL: // タップで「英数」と「無変換」、ホールドで「Lower」
-        return MACRO_TAP_HOLD_LAYER( record, MACRO(T(MHEN), T(LANG2), END), _LOWER );
-        case UM_KHKR: // タップで「かな」と「変換」、ホールドで「Raise」
-        return MACRO_TAP_HOLD_LAYER( record, MACRO(T(HENK), T(LANG1), END), _RAISE );
-        };
-        return MACRO_NONE;
 }
