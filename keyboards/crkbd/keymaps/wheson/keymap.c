@@ -107,11 +107,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-        RST,  LRST, XXXXX, XXXXX, XXXXX, XXXXX,                  XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
+        RST,  LRST, XXXXX, XXXXX, XXXXX, XXXXX,                   F7  ,  F8  ,  F9  ,  F10 ,  F11 ,  F12 ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LTOG,  LHUI,  LSAI,  LVAI, XXXXX, XXXXX,                   F7  ,  F8  ,  F9  ,  F10 ,  F11 ,  F12 ,\
+       LTOG,  LHUI,  LSAI,  LVAI, XXXXX, XXXXX,                   F4  ,  F5  ,  F6  , XXXXX,  UP  , XXXXX,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-       LMOD,  LHUD,  LSAD,  LVAD, XXXXX, XXXXX,                   F1  ,  F2  ,  F3  ,  F4  ,  F5  ,  F6  ,\
+       LMOD,  LHUD,  LSAD,  LVAD, XXXXX, XXXXX,                   F1  ,  F2  ,  F3  , LEFT , DOWN , RIGHT,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   EMHC, LOWER,   ENT ,     SPC , RAISE, KHKA \
                               //`--------------------'  `--------------------'
